@@ -7,6 +7,8 @@ contract TodoList {
     uint id;
     string content;
     bool completed;
+    uint dueDate;
+    uint category;
   }
 
   mapping(uint => Task) public tasks;

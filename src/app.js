@@ -73,6 +73,8 @@ loadAccount: async () => {
       const taskId = task[0].toNumber()
       const taskContent = task[1]
       const taskCompleted = task[2]
+      const taskDueDate = task[3].toNumber()
+      const taskCategory = task[4]
 
       // Create the html for the task
       const $newTaskTemplate = $taskTemplate.clone()
@@ -94,13 +96,40 @@ loadAccount: async () => {
     }
   },
 
-  createTask: async () => {
+createTask: async () => {
+  try {
     App.setLoading(true)
-    const content = $('#newTask').val()
-    await App.todoList.createTask(content, { from: App.account })
-    window.location.reload()
-  },
 
+    const content = $('#newTask').val()
+    const dueDateInput = $('#newDueDate').val()
+    const category = $('#newCategory').val()
+
+    let dueDate = 0
+
+    if (dueDateInput) {
+      dueDate = Math.floor(new Date(dueDateInput).getTime() / 1000)
+    }
+
+    console.log({
+      content,
+      dueDate,
+      category
+    })
+
+    await App.todoList.createTask(
+      content,
+      dueDate,
+      category,
+      { from: App.account }
+    )
+
+    window.location.reload()
+
+  } catch (error) {
+    console.error(error)
+    alert("Transaction failed — check console")
+  }
+},
   toggleCompleted: async (e) => {
     App.setLoading(true)
     const taskId = e.target.name

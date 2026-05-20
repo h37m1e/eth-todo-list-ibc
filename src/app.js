@@ -104,6 +104,13 @@ createTask: async () => {
     const dueDateInput = $('#newDueDate').val()
     const category = $('#newCategory').val()
 
+    
+    if (!dueDateInput) {
+      alert("Select due date")
+      return
+    }
+
+
     let dueDate = 0
 
     if (dueDateInput) {
@@ -113,12 +120,13 @@ createTask: async () => {
     console.log({
       content,
       dueDate,
-      category
+      category,
+      types: [typeof content, typeof dueDate, typeof category]
     })
 
     await App.todoList.createTask(
       content,
-      dueDate,
+      dueDate.toString(),
       category,
       { from: App.account }
     )

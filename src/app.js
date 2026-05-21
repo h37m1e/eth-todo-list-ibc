@@ -78,7 +78,19 @@ loadAccount: async () => {
 
       // Create the html for the task
       const $newTaskTemplate = $taskTemplate.clone()
-      $newTaskTemplate.find('.content').html(taskContent)
+      let formattedDate = ''
+
+if (taskDueDate > 0) {
+  formattedDate = new Date(taskDueDate * 1000).toLocaleDateString()
+}
+
+const categoryClass = `category-${taskCategory}`
+
+$newTaskTemplate.find('.content').html(
+  `${taskContent} 
+   <span class="category-badge ${categoryClass}">${taskCategory}</span>
+   ${formattedDate ? `<span class="dueDate"> | Due: ${formattedDate}</span>` : ''}`
+)
       $newTaskTemplate.find('input')
                       .prop('name', taskId)
                       .prop('checked', taskCompleted)

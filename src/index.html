@@ -16,30 +16,66 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <style>
-      main {
-        margin-top: 60px;
-      }
+   <style>
+  main {
+    margin-top: 60px;
+  }
 
-      #content {
-        display: none;
-      }
+  #content {
+    display: none;
+  }
 
-      form {
-        width: 100%;
-        max-width: 900px;
-        margin-bottom: 10px;
-      }
+  form {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 10px;
+  }
 
-      ul {
-        margin-bottom: 0px;
-      }
+  ul {
+    margin-bottom: 0px;
+  }
 
-      #completedTaskList .content {
-        color: rgb(128, 128, 128);
-        text-decoration: line-through;
-      }
-    </style>
+  #completedTaskList .content {
+    color: rgb(128, 128, 128);
+    text-decoration: line-through;
+  }
+
+  .category-badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 6px;
+    color: white;
+    display: inline-block;
+  }
+
+  .category-Math {
+    background-color: #ff00c3;
+  }
+
+  .category-Physics {
+    background-color: #28a745;
+  }
+
+  .category-Languages {
+    background-color: #4251c1;
+  }
+
+  .category-Other {
+    background-color: #7c7d7d;
+  }
+
+  /* optional: nicer spacing between parts */
+  .taskTemplate span {
+    margin-left: 5px;
+  }
+  .dueDate {
+  margin-left: 6px;
+  font-weight: bold;
+  color: #000f0f; /* red */
+}
+</style>
   </head>
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">

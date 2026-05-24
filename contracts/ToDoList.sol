@@ -27,7 +27,7 @@ contract TodoList {
   );
 
   constructor() public {
-    createTask("Check out dappuniversity.com", 0, "Other");
+    createTask("First test", 0, "Other");
   }
 
   function createTask(
